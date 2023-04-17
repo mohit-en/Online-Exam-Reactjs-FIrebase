@@ -14,7 +14,7 @@ import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 
 //
-import { quizData } from "./utils/quiz";
+import { data as quizData } from "./utils/quiz";
 import { db } from "./utils/firebase";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [marks, setMarks] = useState(0);
-  const [unitNo, setUnitNo] = useState(7);
+  const [unitNo, setUnitNo] = useState("7,9");
 
   //
   const [counterTrial, setCounterTrial] = useState(0);
@@ -58,7 +58,7 @@ function App() {
     event.preventDefault();
 
     if (usersData.computerId && usersData.rollNo && usersData.studentName) {
-      const snapData = await getDoc(doc(db, "students", usersData.rollNo));
+      const snapData = await getDoc(doc(db, "std11", usersData.rollNo));
 
       const d = (await snapData.exists())
         ? { ...snapData.data(), isDataFound: [] }
@@ -79,7 +79,7 @@ function App() {
         setShowQuiz(true);
 
         await setDoc(
-          doc(db, "students", usersData.rollNo),
+          doc(db, "std11", usersData.rollNo),
           {
             roll_no: usersData.rollNo,
             name: usersData.studentName,
@@ -131,18 +131,33 @@ function App() {
   const showTheResult = async () => {
     //
 
-    if (marks <= 5) {
+    if (marks <= 20) {
       setImgUrl(
-        "https://qph.cf2.quoracdn.net/main-qimg-2cd344ad99b5ce46f033c80553392a06"
+        "https://media.tenor.com/7HMqIeIPtnAAAAAd/dad-beating-son2-dad-beating.gif"
       );
-    } else if (marks <= 10) {
+    }
+    // else if (marks <= 20) {
+    //   setImgUrl(
+    //     "https://media.tenor.com/nml0fePb0sEAAAAd/mai-madarchod-huu.gif"
+    //   );
+    // }
+    // else if (marks <= 30) {
+    //   setImgUrl(
+    //     "https://media.tenor.com/7HMqIeIPtnAAAAAd/dad-beating-son2-dad-beating.gif"
+    //   );
+    // }
+    else if (marks <= 25) {
       setImgUrl(
-        "https://media.tenor.com/BomrEy3LytgAAAAd/beta-tumse-na-ho-payega-gangs-of-wasseypur.gif"
+        "https://media.tenor.com/xZkG53lLlkMAAAAC/saale-ka-khopdi-tod-babu-bhaiya.gif"
       );
-    } else if (marks <= 15) {
-      setImgUrl("https://media.tenor.com/T2quXxEDDAEAAAAC/mirzapur-kaleen.gif");
+    } else if (marks <= 30) {
+      setImgUrl("https://i.redd.it/aiclby567di61.gif");
+    } else if (marks <= 35) {
+      setImgUrl(
+        "https://media.tenor.com/OVZ7LlQZGP8AAAAM/ashish-chanchlani-ashish.gif"
+      );
     } else {
-      setImgUrl("https://media.tenor.com/FzHuYmU7pToAAAAM/kbc-adbhut.gif");
+      setImgUrl("https://media.tenor.com/FzHuYmU7pToAAAAC/kbc-adbhut.gif");
     }
 
     setShowGoliImg(true);
@@ -152,7 +167,7 @@ function App() {
     setShowQuiz(false);
 
     await setDoc(
-      doc(db, "students", usersData.rollNo),
+      doc(db, "std11", usersData.rollNo),
       {
         roll_no: usersData.rollNo,
         name: usersData.studentName,
@@ -167,7 +182,7 @@ function App() {
       { merge: true }
     );
 
-    // await setDoc(doc(db, "students", usersData.rollNo), {
+    // await setDoc(doc(db, "std11", usersData.rollNo), {
     //   data: arrayUnion({
     //     date: Date.now(),
     //     marks: marks,

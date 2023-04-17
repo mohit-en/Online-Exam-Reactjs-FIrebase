@@ -9,7 +9,7 @@ const Start = ({ startQuiz, showStart, usersData, setUsersData }) => {
       <div className="container">
         <div className="row vh-100 align-items-center justify-content-center">
           <div className="col-lg-8">
-            <h1 className="fw-bold mb-4">Chapter No 7 - Java Basics</h1>
+            <h1 className="fw-bold mb-4">Chapter 7 and 9</h1>
             <form action="#" method="get" onSubmit={startQuiz}>
               <div className="container">
                 <div className="row">
@@ -28,7 +28,7 @@ const Start = ({ startQuiz, showStart, usersData, setUsersData }) => {
                       })
                     }
                   />
-                  <label htmlFor="user_no">User No</label>
+                  <label htmlFor="user_no">Computer User No</label>
                   <input
                     type="number"
                     className="form-control mb-3"

@@ -6,7 +6,7 @@ function randomiseData(props) {
     index--;
     [props[index], props[randomIndex]] = [props[randomIndex], props[index]];
   }
-  return props ? props.splice(20) : [];
+  return props;
 }
 
 export { randomiseData };
